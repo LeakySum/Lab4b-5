@@ -1,0 +1,57 @@
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+double sum(double a, double b) {
+	return(a + b);
+}
+
+double subtraction(double a, double b) {
+	return(a - b);
+}
+
+double division(double a, double b) {
+	if (b == 0) {
+		cout << "error\n";
+		return(0);
+	}
+	else
+		return(a / b);
+}
+
+double multyplication(double a, double b) {
+	return(a*b);
+}
+
+
+int main(int argc, char *argv[])
+{
+	int a, b;
+	setlocale(LC_ALL, "rus"); 
+	if (argc< 2)
+	{
+		printf_s("Ошибка, параметров в командной строке не хватает для задания исходных данных. Для завершения нажмите любую клавишу\n");
+		system("pause");
+		return 1;
+	}
+	
+	if (sscanf_s(argv[1], "%d", &a) < 1) 
+	{
+		printf_s("Ошибка, неверный формат первого входного параметра. Для завершения нажмите любую клавишу\n");
+		system("pause");
+		return 1;
+	}
+	if (sscanf_s(argv[2], "%d", &b) < 1)
+	{
+		printf_s("Ошибка, неверный формат второго входного параметра. Для завершения нажмите любую клавишу\n");
+		system("pause");
+		return 1;
+	}
+	
+	cout <<"a+b=" <<sum(a, b) << endl;
+	cout << "a-b=" << subtraction(a,  b) << endl;
+	cout << "a/b=" << division(a, b) << endl;
+	cout << "a*b=" << multyplication(a, b) << endl;
+	system("pause"); 
+	return 0;
+}
