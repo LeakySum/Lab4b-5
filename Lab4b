@@ -1,0 +1,85 @@
+#include "stdafx.h"
+
+#include <stdio.h>
+#include <iostream>
+#include <cstring>
+#include <stdlib.h>
+#include <string.h>
+#include <string>
+#include <conio.h>
+
+using namespace std;
+
+struct cathedra  
+{
+	char faculty[64];   
+	int num_gr;
+	
+};
+
+struct student  
+{
+char Name[128];  
+char Surname[128];
+cathedra cath;
+int age; 
+char sex;
+};
+
+
+int main(int argc, char* argv[])
+{
+	student *pS; 
+	int n; 
+	cout << "n=";
+	cin >> n;
+	cout << endl;
+	pS = (student*)malloc(n * sizeof(student)); 
+	for (int i = 0; i<n; i++) 
+	{
+		cout << "Student" << i + 1 << endl;
+		cout << "Name: ";
+		cin >>pS[i].Name, 128;
+		_flushall();
+		cout << "Surname: ";
+		cin >> pS[i].Surname, 128;
+		_flushall();
+		cout  << "age: ";
+		cin >> pS[i].age;
+		_flushall();
+		cout  << "sex: " ;
+		cin >> pS[i].sex;
+		_flushall();
+		cout << "cathedra";
+		cout << endl << "faculty: ";
+		fflush(stdin);
+		cin >> pS[i].cath.faculty, 64;
+		_flushall();
+		cout  << "num_gr: ";
+		cin >>pS[i].cath.num_gr;
+		
+		cin.get();
+		cin.clear();
+		
+
+
+	}
+	for (int i = 0; i < n; i++) {
+		cout << endl << "Student " << i + 1 << " " << pS[i].Name << pS[i].Surname << " " << pS[i].sex << " " << pS[i].age << " ";
+		cout << pS[i].cath.faculty << " " << pS[i].cath.num_gr << " ";
+	}
+	
+	cout << endl << "Print the sex(w or m) ";
+	char sex_c;
+	int k = 0;
+	cin >> sex_c;
+	for (int i = 0; i<n; i++)
+	{
+		if (sex_c== pS[i].sex) k++;
+	}
+	fflush(stdin);
+	cout << endl << "People of the same sex: " << k << endl;
+	free(pS);
+	system("pause");
+	return 0;
+}
